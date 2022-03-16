@@ -1,0 +1,11 @@
+[Unit]
+Description=Ban everyone
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/connectban
+
+[Install]
+WantedBy=multi-user.target
