@@ -46,20 +46,20 @@ int main (int argc, char *argv[]){
         fprintf(stderr, "Listening \n");
         int remotefd;
 
+        // Accept connection
         if((remotefd = accept(sockfd, (struct sockaddr *) &remoteaddress, (socklen_t *) &addr_length)) == -1){
             perror("Accept error");
             exit(1);
         }
         fprintf(stderr, "Get R3KT %s \n", inet_ntoa(remoteaddress.sin_addr));
         
+        // Run command to ban the ip
         char command[2048] = "iptables -I ssh-filter 1 -s ";
         strcat(command, inet_ntoa(remoteaddress.sin_addr));
         strcat(command, " -j DROP");
-        //printf(command);
         system(command);
 
         close(remotefd);
 
     }
-    //int returncode = system("echo test");
 }
