@@ -3,19 +3,18 @@ import time
 import function
 import sys
 import logger
-
-sleep_minutes = 1
+import config
 
 if __name__ == "__main__":
     debug = "-d" in sys.argv
     try:
         while True:
             # Run main code on loop
-            function.function(debug)
+            function.function(debug, config)
 
             # Sleep for x minutes
-            if debug: logger.debug(f"Sleeping for {sleep_minutes}m")
-            time.sleep(60 * sleep_minutes)
+            if debug: logger.debug(f"Sleeping for {config.sleep_time}m")
+            time.sleep(60 * config.sleep_time)
     except KeyboardInterrupt:
         print("Bye!")
         exit()

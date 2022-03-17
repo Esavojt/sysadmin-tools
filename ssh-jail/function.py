@@ -7,7 +7,7 @@ import regexp
 import logger
 
 # Main function looping
-def function(debug):
+def function(debug, config):
 
     # Open the ssh log file and read the contents
     with open("/var/log/auth.log", "r") as f:
@@ -28,9 +28,14 @@ def function(debug):
     del result
     
     for ip_to_ban in to_ban:
-        # If ip is already banned, ignore
+        # If IP is already banned, ignore
         if ip_to_ban in already_banned:
             if debug: logger.debug(f"IP '{ip_to_ban}' is already banned, ignoring")
+            continue
+
+        # Check if IP is excluded
+        if ip_to_ban in config.ignored_ips:
+            if debug: logger.debug(f"IP '{ip_to_ban}' is in ignored ips")
             continue
 
         # Validate that it really is an IP address
