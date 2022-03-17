@@ -1,17 +1,21 @@
 # Import libraries
 import time
 import function
+import sys
+import logger
 
-sleep_minutes = 0
+sleep_minutes = 1
 
 if __name__ == "__main__":
+    debug = "-d" in sys.argv
     try:
         while True:
             # Run main code on loop
-            function.function()
+            function.function(debug)
 
             # Sleep for x minutes
-            time.sleep(1)
+            if debug: logger.debug(f"Sleeping for {sleep_minutes}m")
+            time.sleep(60 * sleep_minutes)
     except KeyboardInterrupt:
         print("Bye!")
         exit()
