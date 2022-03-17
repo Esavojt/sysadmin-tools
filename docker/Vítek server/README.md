@@ -10,7 +10,10 @@ docker run \
 -d --name "Vitek_server" vitserver
 ```
 
-Služby poslouchají na
+## Služby poslouchají na
 
 - SSH - 5022
 - HTTP - 5080
+  
+## Nutné pravomoce pro soubor authorized_keys
+`-rw------- 1 root root 398 Mar 17 19:38 /docker/files/vitek/authorized_keys`
