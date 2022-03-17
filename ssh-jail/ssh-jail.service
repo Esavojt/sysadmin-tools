@@ -1,0 +1,12 @@
+[Unit]
+Description=SSH jail
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=python3 /etc/ssh-jail/main.py
+WorkingDirectory=/etc/ssh-jail
+
+[Install]
+WantedBy=multi-user.target
