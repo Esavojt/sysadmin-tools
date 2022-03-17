@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Import libraries
 import time
 import function
@@ -7,6 +8,7 @@ import config
 
 if __name__ == "__main__":
     debug = "-d" in sys.argv
+    logger.info(f"ssh-jail started!")
     try:
         while True:
             # Run main code on loop
