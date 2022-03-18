@@ -5,7 +5,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=python3 /etc/ssh-jail/main.py
+ExecStart=python3 -u /etc/ssh-jail/main.py
 WorkingDirectory=/etc/ssh-jail
 
 [Install]
